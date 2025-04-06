@@ -1,0 +1,40 @@
+.workations-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  /////
+  .workations-table th,
+  .workations-table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .workations-table th {
+    cursor: pointer;
+    background-color: #f4f4f4;
+  }
+  
+  .workations-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .highlighted {
+    background-color: #e0f7fa;
+  }
+  
+  td img {
+    width: 24px;
+    height: 16px;
+  }
+  
+  .risk-level-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .risk-icon {
+    width: 20px;
+    height: auto;
+  }

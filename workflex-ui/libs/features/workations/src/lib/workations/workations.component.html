@@ -1,0 +1,60 @@
+<div class="workations-container">
+    <table class="workations-table">
+      <thead>
+        <tr>
+          <th (click)="sortTable('employee')">Employee</th>
+          <th (click)="sortTable('origin')">Origin</th>
+          <th (click)="sortTable('destination')">Destination</th>
+          <th (click)="sortTable('riskLevel')">Risk Level</th>
+          <th (click)="sortTable('startDate')">Start Date</th>
+          <th (click)="sortTable('endDate')">End Date</th>
+          <th (click)="sortTable('workingDays')">Working Days</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let workation of workations"
+          [class.highlighted]="workation === highlightedRow"
+          (mouseover)="highlightRow(workation)"
+          (mouseleave)="removeHighlight()"
+          (focus)="highlightRow(workation)"
+          (blur)="removeHighlight()"
+          tabindex="0"
+        >
+          <td>{{ workation.employee }}</td>
+          <td>
+            {{ workation.origin }}
+            <img
+              *ngIf="workation.destination"
+              [src]="getFlagImage(workation.origin)"
+              alt="{{ workation.origin }} flag"
+              class="flag-icon"
+            />
+          </td>
+          <td>
+            {{ workation.destination }}
+            <img
+              *ngIf="workation.destination"
+              [src]="getFlagImage(workation.destination)"
+              alt="{{ workation.destination }} flag"
+              class="flag-icon"
+            />
+          </td>
+          <td>
+            <div class="risk-level-container">
+              <img 
+                [src]="getRiskIcon(workation.riskLevel)" 
+                alt="{{ workation.riskLevel }}" 
+                class="risk-icon"
+              />
+              {{ workation.riskLevel === 'HIGH' ? 'High Risk' : (workation.riskLevel === 'LOW' ? 'Low Risk' : 'No Risk') }}
+            </div>
+          </td>
+          <td>{{ workation.startDate | date: 'dd/MM/yyyy' }}</td>
+          <td>{{ workation.endDate | date: 'dd/MM/yyyy' }}</td>
+          <td>{{ workation.workingDays }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
